@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\widgets\Alert;
@@ -36,30 +37,30 @@ ResumeAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="main-wrapper">
-    
-<header class="header">
-            <div class="container">
-                <nav class="navbar navigation">
-                    <a class="navbar-brand" href="#"><img src="images/logo.svg" alt="Logo">
-                    </a>
-                    <div class="header__login header__login-mobile">
-                    </div>
-                    <ul class="navigation-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="http://myheadhunter/web/index.php?r=//resume/my-resume">Мои резюме</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://myheadhunter/web/index.php?r=//resume/resume-list">резюме</a>
-                        </li>
-                    </ul>
-                    <div class="navigation-toggler">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </nav>
-            </div>
-        </header>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navigation">
+                <a class="navbar-brand" href="#"><img src="images/logo.svg" alt="Logo">
+                </a>
+                <div class="header__login header__login-mobile">
+                </div>
+                <ul class="navigation-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://myheadhunter/web/index.php?r=//resume/my-resume">Мои резюме</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://myheadhunter/web/index.php?r=//resume/resume-list">резюме</a>
+                    </li>
+                </ul>
+                <div class="navigation-toggler">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
     <?= $content ?>
     <footer class="footer">
         <div class="container">

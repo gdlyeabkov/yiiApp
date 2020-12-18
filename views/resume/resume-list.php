@@ -1,25 +1,50 @@
-<style>
-    .d-flex{
-        width:30%;
-        display:flex;
-        flex-direction:column;
-        
-        justify-content:start;
-        align-self:start;
-        align-items:start;
+<?php
+/* @var $this yii\web\View */
+/* @var $search string */
+/* @var $sort app\models\Resume */
+/* @var $genderFilter string */
+/* @var $cityFilter string */
+/* @var $salaryFilter string */
+/* @var $specializationFilter string */
+/* @var $ageFromFilter string */
+/* @var $ageToFilter string */
+/* @var $experienceFilter string */
+/* @var $employmentFilter string */
+/* @var $sheduleFilter string */
+
+
+//    echo GridView::widget([
+//    'dataProvider' => $dataProvider,
+//    'filterModel' => $searchModel,
+//    ]);
+//?>
+<!-- <style>
+    .d-flex {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: start;
+        align-self: start;
+        align-items: start;
     }
 </style>
 <?php
+
 use \yii\widgets\LinkPager;
+
 ?>
 <div class="header-search">
     <div class="container">
         <div class="header-search__wrap">
             <form class="header-search__form">
                 <a href="#"><img src="images/dark-search.svg" alt="search"
-                                    class="dark-search-icon header-search__icon"></a>
+                                 class="dark-search-icon header-search__icon"></a>
                 <input class="header-search__input mySearch" type="text" placeholder="Поиск по резюме и навыкам">
-                <button type="button" class="blue-btn header-search__btn" onclick="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&search=` + document.querySelector('.mySearch').value" >Найти</button>
+                <button type="button" class="blue-btn header-search__btn"
+                        onclick="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&search=` + document.querySelector('.mySearch').value">
+                    Найти
+                </button>
             </form>
         </div>
     </div>
@@ -42,15 +67,21 @@ use \yii\widgets\LinkPager;
                         </div>
                         <div class="vakancy-page-wrap show">
                             <a class="vakancy-page-btn vakancy-btn dropdown-toggle" href="#" role="button"
-                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                               id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
                                 По новизне
                                 <i class="fas fa-angle-down arrowDown"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=date_updated">По новизне</a>
-                                <a class="dropdown-item" href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=salary">По возрастанию зарплаты</a>
-                                <a class="dropdown-item" href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=salary%20DESC">По убыванию зарплаты</a>
+                                <a class="dropdown-item"
+                                   href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=date_updated">По
+                                    новизне</a>
+                                <a class="dropdown-item"
+                                   href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=salary">По
+                                    возрастанию зарплаты</a>
+                                <a class="dropdown-item"
+                                   href="http://myheadhunter/web/index.php?r=//resume/resume-list&queryFilters=salary%20DESC">По
+                                    убыванию зарплаты</a>
                             </div>
                         </div>
                     </div>
@@ -63,39 +94,40 @@ use \yii\widgets\LinkPager;
                             </div>
                         </div>
                         <div class="company-list-search__block-right">
-                            <div class="mini-paragraph cadet-blue mobile-mb12">Обновлено <?= $resume->date_updated ?></div>
+                            <div class="mini-paragraph cadet-blue mobile-mb12">
+                                Обновлено <?= $resume->date_updated ?></div>
                             <h3 class="mini-title mobile-off"><?= $resume->specialization ?></h3>
                             <div class="d-flex align-items-center flex-wrap mb8 ">
                                 <span class="mr16 paragraph"><?= $resume->salary ?> ₽</span>
-                                <span class="mr16 paragraph">Опыт работы <?=  $resume->experience && $resume->experience != 0  ?  $resume->experience . ' года' : 'Без опыта работы' ?> </span>
+                                <span class="mr16 paragraph">Опыт работы <?= $resume->experience && $resume->experience != 0 ? $resume->experience . ' года' : 'Без опыта работы' ?> </span>
                                 <span class="mr16 paragraph">Возраст<?= $resume->age ?> года</span>
                                 <p class="paragraph tbold mobile-off">Последнее место работы</p>
                                 <span class="mr16 paragraph"><?= end(explode(",", $resume->places_of_work)) ?></span>
-                                    <?php foreach(explode(',', $resume->dateWork) as $dateBeginAndDateEnd): ?>
-                                        <p class="paragraph tbold mobile-off">Дата начала и дата завершения работы :</p>
-                                        <?php foreach(explode('|', $dateBeginAndDateEnd) as $dateBeginOrDateEnd): ?>
-                                            
-                                            <span class="mr16 paragraph"><?= $dateBeginOrDateEnd ?></span>
-                                        <?php endforeach ?>
-                                        <hr />
+                                <?php foreach (explode(',', $resume->dateWork) as $dateBeginAndDateEnd): ?>
+                                    <p class="paragraph tbold mobile-off">Дата начала и дата завершения работы :</p>
+                                    <?php foreach (explode('|', $dateBeginAndDateEnd) as $dateBeginOrDateEnd): ?>
+
+                                        <span class="mr16 paragraph"><?= $dateBeginOrDateEnd ?></span>
                                     <?php endforeach ?>
+                                    <hr/>
+                                <?php endforeach ?>
                                 <p class="paragraph tbold mobile-off">Организация</p>
                                 <span class="mr16 paragraph"><?= $resume->organization ?></span>
                                 <p class="paragraph tbold mobile-off">Должность</p>
                                 <span class="mr16 paragraph"><?= $resume->position ?></span>
                                 <p class="paragraph tbold mobile-off">Обязанности, функции, достижения</p>
                                 <span class="mr16 paragraph"><?= $resume->duties ?></span>
-                                
+
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 <?php endforeach ?>
                 <?php
-                    echo LinkPager::widget([
-                            'pagination' => $pages,
-                        ]);
+                echo LinkPager::widget([
+                    'pagination' => $pages,
+                ]);
                 ?>
             </div>
             <div class="col-lg-3 desctop-992-pl-16 d-flex flex-column vakancy-page-filter-block vakancy-page-filter-block-dnone">
@@ -105,9 +137,12 @@ use \yii\widgets\LinkPager;
                     <img class="cursor-p" src="images/big-cancel.svg" alt="cancel">
                 </div>
                 <div class="signin-modal__switch-btns-wrap resume-list__switch-btns-wrap mb16">
-                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list" class="signin-modal__switch-btn active">Все</a>
-                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list&genderFilter=male" class="signin-modal__switch-btn ">Мужчины</a>
-                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list&&genderFilter=female" class="signin-modal__switch-btn ">Женщины</a>
+                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list"
+                       class="signin-modal__switch-btn active">Все</a>
+                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list&genderFilter=male"
+                       class="signin-modal__switch-btn ">Мужчины</a>
+                    <a href="http://myheadhunter/web/index.php?r=//resume/resume-list&&genderFilter=female"
+                       class="signin-modal__switch-btn ">Женщины</a>
                 </div>
                 <div class="vakancy-page-filter-block__row mb24">
                     <div class="paragraph cadet-blue">Город</div>
@@ -131,7 +166,8 @@ use \yii\widgets\LinkPager;
                 <div class="vakancy-page-filter-block__row mb24">
                     <div class="paragraph cadet-blue">Специализация</div>
                     <div class="citizenship-select">
-                        <select onblur="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&specialization=` + document.querySelector(`.selectOne`).value" class="nselect-1 selectOne" data-title="Любая">
+                        <select onblur="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&specialization=` + document.querySelector(`.selectOne`).value"
+                                class="nselect-1 selectOne" data-title="Любая">
                             <option value="01">Фронтенд</option>
                             <option value="02">Бекенд</option>
                             <option value="03">Дизайн</option>
@@ -150,24 +186,28 @@ use \yii\widgets\LinkPager;
                     <div class="paragraph cadet-blue">Опыт работы</div>
                     <div class="profile-info">
                         <div class="form-check d-flex">
-                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=0`" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=0`"
+                                   type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1"></label>
                             <label for="exampleCheck1" class="profile-info__check-text">Без опыта</label>
                         </div>
                         <div class="form-check d-flex">
-                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=1`" type="checkbox" class="form-check-input" id="exampleCheck2">
+                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=1`"
+                                   type="checkbox" class="form-check-input" id="exampleCheck2">
                             <label class="form-check-label" for="exampleCheck2"></label>
                             <label for="exampleCheck2" class="profile-info__check-text">От 1 года до 3
                                 лет</label>
                         </div>
                         <div class="form-check d-flex">
-                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=3`" type="checkbox" class="form-check-input" id="exampleCheck3">
+                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=3`"
+                                   type="checkbox" class="form-check-input" id="exampleCheck3">
                             <label class="form-check-label" for="exampleCheck3"></label>
                             <label for="exampleCheck3" class="profile-info__check-text">От 3 лет до 6
                                 лет</label>
                         </div>
                         <div class="form-check d-flex">
-                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=6`" type="checkbox" class="form-check-input" id="exampleCheck4">
+                            <input onchange="location.href=`http://myheadhunter/web/index.php?r=//resume/resume-list&experienceFilter=6`"
+                                   type="checkbox" class="form-check-input" id="exampleCheck4">
                             <label class="form-check-label" for="exampleCheck4"></label>
                             <label for="exampleCheck4" class="profile-info__check-text">Более 6 лет</label>
                         </div>
@@ -244,4 +284,50 @@ use \yii\widgets\LinkPager;
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<?php
+    use yii\grid\GridView;
+    echo GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            [
+                'attribute' => 'photo',
+                'format' => 'text',
+            ],
+            [
+                'attribute' => 'date_updated',
+                'format' => 'date',
+            ],
+            [
+                'attribute' => 'specialization',
+                'format' => 'text',
+            ],
+            [
+                'attribute' => 'salary',
+                'format' => 'integer',
+            ],
+            [
+                'attribute' => 'experience',
+                'format' => 'integer',
+            ],
+            [
+                'attribute' => 'age',
+                'format' => 'integer',
+            ],
+            [
+                'attribute' => 'recidense',
+                'format' => 'text',
+            ],
+            [
+                'attribute' => 'places_of_work',
+                'format' => 'text',
+            ],
+        ],
+        
+    ]);
+
+    /*
+    'filterModel' => $searchModel,
+    */
+    
+?>

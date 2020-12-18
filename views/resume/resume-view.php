@@ -1,4 +1,7 @@
 <?php
+/* @var $this yii\web\View */
+/* @var $resu app\models\Resume */
+
 $resu->views += 1;
 $resu->update();
 ?>
@@ -7,7 +10,7 @@ $resu->update();
         <div class="row">
             <div class="col-lg-12">
                 <div class="mt8 mb32"><a href="#"><img src="images/blue-left-arrow.svg" alt="arrow"> Резюме в
-                    Кемерово</a>
+                        Кемерово</a>
                 </div>
             </div>
         </div>
@@ -33,7 +36,9 @@ $resu->update();
                     <div class="profile-info__block company-profile-info__block mb8">
                         <div class="profile-info__block-left company-profile-info__block-left">Возраст
                         </div>
-                        <div class="profile-info__block-right company-profile-info__block-right"><?= $resu->age ?> года(лет, год)</div>
+                        <div class="profile-info__block-right company-profile-info__block-right"><?= $resu->age ?>
+                            года(лет, год)
+                        </div>
                     </div>
                     <div class="profile-info__block company-profile-info__block mb8">
                         <div class="profile-info__block-left company-profile-info__block-left">Занятость</div>
@@ -55,14 +60,14 @@ $resu->update();
                             Электронная почта
                         </div>
                         <div class="profile-info__block-right company-profile-info__block-right"><a
-                                href="#"><?= $resu->email ?></a></div>
+                                    href="#"><?= $resu->email ?></a></div>
                     </div>
                     <div class="profile-info__block company-profile-info__block mb8">
                         <div class="profile-info__block-left company-profile-info__block-left">
                             Телефон
                         </div>
                         <div class="profile-info__block-right company-profile-info__block-right"><a
-                                href="#"><?= $resu->phone ?></a>
+                                    href="#"><?= $resu->phone ?></a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +79,8 @@ $resu->update();
                         <div class="row">
                             <div class="col-lg-10">
                                 <div class="row mb16">
-                                    <div class="col-lg-12"><h3 class="heading mb16">Опыт работы <?= $resu->experience ?> лет</h3></div>
+                                    <div class="col-lg-12"><h3 class="heading mb16">Опыт работы <?= $resu->experience ?>
+                                            лет</h3></div>
                                     <div class="col-md-4 mb16">
                                         <div class="paragraph tbold mb8">Апрель 2013 — по настоящее время</div>
                                         <div class="mini-paragraph">7 лет 1 месяц</div>
@@ -84,7 +90,7 @@ $resu->update();
                                         <div class="paragraph tbold mb8">Директор по стратегическому развитию
                                         </div>
                                         <div class="paragraph">
-                                        <!-- <= $resu->about ?> -->
+                                            <!-- <= $resu->about ?> -->
                                         </div>
                                     </div>
                                 </div>
@@ -96,18 +102,17 @@ $resu->update();
                                     <div class="col-md-8">
                                         <!-- <div class="paragraph tbold mb8">Программные системы Атлансис</div> -->
                                         <!-- <div class="paragraph tbold mb8">Директор по стратегическому развитию -->
-                                        </div>
-                                        <div class="paragraph">
+                                    </div>
+                                    <div class="paragraph">
                                         <!-- <= $resu->about ?> -->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-7">
-                                <div class="company-profile-text mb64">
-                                    <h3 class="heading mb16">Обо мне</h3>
-                                    <?= $resu->about ?>
-                                </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="company-profile-text mb64">
+                                <h3 class="heading mb16">Обо мне</h3>
+                                <?= $resu->about ?>
                             </div>
                         </div>
                     </div>
@@ -115,4 +120,5 @@ $resu->update();
             </div>
         </div>
     </div>
+</div>
 </div>

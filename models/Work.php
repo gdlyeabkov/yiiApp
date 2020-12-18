@@ -4,6 +4,9 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * Work is the model behind the one work of worker.
+ */
 class Work extends ActiveRecord
 {
     public static function tableName(){
